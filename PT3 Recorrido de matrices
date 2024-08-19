@@ -33,7 +33,7 @@ int main()
         {25, 26, 27, 28, 29, 30},
         {31, 32, 33, 34, 35, 36}
     };
-
+//Aqui estaba el proble con que desaparecieran en vez de aparecer
     for (int j = C - 1; j >= 0; --j) 
     {
         system("cls");
