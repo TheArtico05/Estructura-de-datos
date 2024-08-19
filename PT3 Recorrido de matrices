@@ -130,7 +130,7 @@ void EmiMatriz(int EmiMat[filas][columnas], int fila, int columna){
   for(contadorh = 0; contadorh < fila; contadorh++){
     if (contadorh % 2 == 0){
       //Izquierda a deredcha
-      for (contadorv = 0; contadorv < fila; contadorv++){
+      for (contadorv = 0; contadorv < columna; contadorv++){
         printf("%d ", EmiMat[contadorh][contadorv]);
       }
     }
