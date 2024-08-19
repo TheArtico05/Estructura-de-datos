@@ -59,7 +59,51 @@ int main()
 }
 
 EJERCICIO 3
+#include <stdio.h>
+#include <stdlib.h>
+#define columnas 6
+#define filas 4 
+int contadorh;
+int contadorv;
+int opcion;
+void EmiMatriz(int EmiMat[columnas][filas], int columna, int fila){
+  for(contadorh = 0; contadorh < columna; contadorh++){
+    if (contadorh % 2 == 0){
+      //Izquierda a deredcha
+      for (contadorv = 0; contadorv < fila; contadorv++){
+        printf("%d ", EmiMat[contadorh][contadorv]);
+      }
+    }
+		//derecha a izquierda
+    else{
+      for (contadorv = fila - 1; contadorv >=0; contadorv--){
+      printf("%d ", EmiMat[contadorh][contadorv]);
+    }
+  }
+  printf("\n");
+  }
+}
 
+int main(){
+  int Emimat1[columnas][filas]= {
+    	{1, 2, 3, 4},
+    	{5, 6, 7, 8},
+    	{9, 10, 11, 12},
+    	{13, 14, 15, 16}, 
+    	{17, 18, 19, 20},
+   		{21,22, 23, 24},
+    };
+  printf("Tarea 3 Recorrido de Matrices, por Ruiz Garcia Emiliano y Moreno Vigueras Arturo Tadeo");
+  printf("Escribe 1 para iniciar el programa");
+  scanf("%d", &opcion);
+  if (opcion == 1){
+       
+    EmiMatriz(Emimat1, columnas, filas);  
+    printf("Espero haya salido bien ;))");   
+  }
+}
+  return 0;
+}
 EJERCICIO 4
 #include <stdio.h>
 #include <stdlib.h> 
