@@ -121,13 +121,13 @@ int main()
 EJERCICIO 3
 #include <stdio.h>
 #include <stdlib.h>
-#define columnas 6
-#define filas 4 
+#define filas 6
+#define columnas 4 
 int contadorh;
 int contadorv;
 int opcion;
-void EmiMatriz(int EmiMat[columnas][filas], int columna, int fila){
-  for(contadorh = 0; contadorh < columna; contadorh++){
+void EmiMatriz(int EmiMat[filas][columnas], int fila, int columna){
+  for(contadorh = 0; contadorh < fila; contadorh++){
     if (contadorh % 2 == 0){
       //Izquierda a deredcha
       for (contadorv = 0; contadorv < fila; contadorv++){
@@ -136,7 +136,7 @@ void EmiMatriz(int EmiMat[columnas][filas], int columna, int fila){
     }
 		//derecha a izquierda
     else{
-      for (contadorv = fila - 1; contadorv >=0; contadorv--){
+      for (contadorv = columna - 1; contadorv >=0; contadorv--){
       printf("%d ", EmiMat[contadorh][contadorv]);
     }
   }
@@ -145,7 +145,7 @@ void EmiMatriz(int EmiMat[columnas][filas], int columna, int fila){
 }
 
 int main(){
-  int Emimat1[columnas][filas]= {
+  int Emimat1[filas][columnas]= {
     	{1, 2, 3, 4},
     	{5, 6, 7, 8},
     	{9, 10, 11, 12},
@@ -158,7 +158,7 @@ int main(){
   scanf("%d", &opcion);
   if (opcion == 1){
        
-    EmiMatriz(Emimat1, columnas, filas);  
+    EmiMatriz(Emimat1, filas, columnas);  
     printf("Espero haya salido bien ;))");   
   }
 
