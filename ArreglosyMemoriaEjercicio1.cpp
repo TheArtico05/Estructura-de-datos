@@ -15,14 +15,14 @@ printf("|"); //raya para separar la lista
 }
 printf("\nEstos son los numeros antes del cambio");
 //424126694, 9 digitos
-printf ("\nAhora, ingresa tu numero de cuenta por favor\n");
+printf ("\nAhora, ingresa tu numero de cuenta por favor (9 dígitos)\n");
+printf ("Asegurate de ingresar un numero valido, ten cuidado con insertar numeros negativos u otros caracteres"
 int NumCuenta;
-scanf("%d", &NumCuenta);//error "process exited after 6.617 seconds with return value 3221225477"
-
+scanf("%d", &NumCuenta);//error "process exited after 6.617 seconds with return value 3221225477", corregido con un &
 Digitofinal = NumCuenta % 10;
 
 if(Digitofinal<0){
-	printf("Ha ocurrido un error inesperado, asegurate de haber insertado bien tu numero de cuenta ");
+	printf("Ha ocurrido un error inesperado, asegurate de haber insertado bien tu numero de cuenta, cuidado con el tamaño del numero que insertaste ");
 	return 2;
 }
 punto[Digitofinal] = -1;
@@ -33,7 +33,7 @@ for (int Heropon = 9; Heropon >= 0; Heropon--) {
 }
 printf("\n");
 if (punto == NULL){
-printf("Ha ocurrido un error SUPER RARO, trata de intentarlo de nuevo, �o puede que este mal el codigo?");
+printf("Ha ocurrido un error SUPER RARO, trata de intentarlo de nuevo, ¿o puede que este mal el codigo?");
 return -1;
 }
 free(punto);
