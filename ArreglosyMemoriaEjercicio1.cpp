@@ -16,7 +16,7 @@ printf("|"); //raya para separar la lista
 printf("\nEstos son los numeros antes del cambio");
 //424126694, 9 digitos
 printf ("\nAhora, ingresa tu numero de cuenta por favor (9 dígitos)\n");
-printf ("Asegurate de ingresar un numero valido, ten cuidado con insertar numeros negativos u otros caracteres"
+printf ("Asegurate de ingresar un numero valido, ten cuidado con insertar numeros negativos u otros caracteres");
 int NumCuenta;
 scanf("%d", &NumCuenta);//error "process exited after 6.617 seconds with return value 3221225477", corregido con un &
 Digitofinal = NumCuenta % 10;
