@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+int Contauno;
+int Saltodos;
+
+int main(){
+    printf("Programa de dynamic array por Emiliano Ruiz Garcia y Moreno Vigueras Arturo Tadeo :) \n");
+    printf ("NUMERO DE CUENTA CON ARREGLOS \n");
+    printf ("\nPrimero, ingresa tu numero de cuenta por favor (9 dígitos)\n");
+    printf ("Asegurate de ingresar un numero valido, ten cuidado con insertar numeros negativos u otros caracteres");
+    	Saltodos=0;
+    int NumCuenta;
+    scanf("%d",&NumCuenta);
+Saltodos=-1;
+    int *punto=(int*) malloc(10* sizeof(int));
+    int sumadigito = 0;
+
+
+    while (NumCuenta>0) {
+ 
+		int Cifrasola=NumCuenta%10;
+        if (Cifrasola!=0) {
+            for (Contauno=0;Contauno<Cifrasola; Contauno++) {
+                punto[sumadigito++]=Cifrasola;
+            }
+        }
+        NumCuenta/=10;
+    }
+
+
+
+      for (int Azurill=sumadigito-1;Azurill>= 0;Azurill--) {
+    if (punto[Azurill]!=punto[Azurill+1]) {//hace que con cada for baje los numros,si no salen como lista
+		
+        	printf("\n");
+
+        }
+
+    printf("{%d}",punto[Azurill]);
+}
+
+    free(punto);
+
+    return 0;
+}
