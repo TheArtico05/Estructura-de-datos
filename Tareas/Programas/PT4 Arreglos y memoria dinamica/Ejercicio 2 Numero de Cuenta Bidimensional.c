@@ -5,7 +5,7 @@ int Marill;
 int main(){
     printf("Programa de dynamic array por Emiliano Ruiz Garcia y Moreno Vigueras Arturo Tadeo :) \n");
     printf("NUMERO DE CUENTA CON ARREGLOS BIDIMENSIONALES DINAMICOS \n");
-    printf("\nPrimero, ingresa tu numero de cuenta por favor (9 dígitos)\n");
+    printf("\nPrimero, ingresa tu numero de cuenta por favor (9 digitos)\n");
     printf("Asegurate de ingresar un numero valido, ten cuidado con insertar numeros negativos u otros caracteres\n");
     int NumCuenta;
     scanf("%d",&NumCuenta);
