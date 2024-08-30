@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 int Azurill;
 int main(){
@@ -10,12 +9,17 @@ int main(){
     scanf("%d",&NumCuenta);
     int Numerotemporal=NumCuenta;
     int ContaDigitos=0;
+    
     while(Numerotemporal>0){
         Numerotemporal/=10;
         ContaDigitos++;
     }
     int **Arreglo2D=(int**)malloc(ContaDigitos*sizeof(int*));
     int Columax=10;
+    if(Arreglo2D==NULL){
+        printf("Ha ocurrido un error SUPER RARO, asegurate de haber escrito bien los datos\n");
+        return -1;
+    }
     for (int Azurill=0; Azurill<ContaDigitos;Azurill++){
         Arreglo2D[Azurill]=(int*)malloc(Columax*sizeof(int));//Segundo for para columnas
         for (int Marill=0;Marill<Columax;Marill++) {
@@ -25,7 +29,7 @@ int main(){
     int filaEmi=0;
     while (NumCuenta>0){
         int Cifrasola=NumCuenta%10;
-        if (Cifrasola!=0) {
+        if (Cifrasola!=0){
             for(Azurill=0;Azurill<Cifrasola;Azurill++) {//se sacan dígitos con %10
                 Arreglo2D[filaEmi][Azurill] = Cifrasola;
             }
@@ -37,9 +41,9 @@ int main(){
         for (int Marill = 0;Marill<Columax&&Arreglo2D[Azurill][Marill]!=0;Marill++) {//Pongo and para evitar que salgan ceros de la matriz
             printf("{%d}", Arreglo2D[Azurill][Marill]);
         }
-        printf("\n");.
+        printf("\n");
     }
-    for (intAzurill=0;Azurill<ContaDigitos;Azurill++) {
+    for (int Azurill=0;Azurill<ContaDigitos;Azurill++) {
         free(Arreglo2D[Azurill]); // Primero se liberan las columnas para evitar error de memoria (se traba)
     }
     free(Arreglo2D); // Ahora se libera todo
