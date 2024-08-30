@@ -23,7 +23,7 @@ int main(){
     printf("\nEstos son los numeros antes del cambio.\n");
 
     printf("Ahora, ingresa tu numero de cuenta por favor (9 digitos)\n");
-    printf("Asegúrate de ingresar un número válido, ten cuidado con insertar números negativos u otros caracteres.\n");
+    printf("Asegurate de ingresar un numero valido, ten cuidado con insertar nnmeros negativos u otros caracteres.\n");
     int NumCuenta;
     if (scanf("%d",&NumCuenta)!=1){
         printf("Ocurrio algo raro, si agregaste un valor que no es un numero posiblememte ocurrio este error.\n");//para evitar letras u otras cosas en el programa
