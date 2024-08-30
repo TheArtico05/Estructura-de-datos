@@ -1,6 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 int Digitofinal;
+int construpar;
+int riki;
+int Heropon;
 int main(){
     printf("Programa de dynamic array por Emiliano Ruiz Garcia y Moreno Vigueras Arturo Tadeo :) \n");
     printf("ARREGLO UNIDIMENSIONAL \n");
@@ -9,16 +13,16 @@ int main(){
         printf("Ha ocurrido un error SUPER RARO, asegurate de haber escrito bien los datos\n");
         return -1;
     }
-    for(int construpar=0; construpar<10; construpar++){
+    for(construpar=0; construpar<10; construpar++){
         punto[construpar]=(construpar+1 )*2;
     }
-    for (int riki=9;riki>=0;riki--){
+    for (riki=9;riki>=0;riki--){
         printf("%d", punto[riki]);
         printf("|"); //raya para separar la lista
     }
-    printf("\nEstos son los números antes del cambio.\n");
+    printf("\nEstos son los numeros antes del cambio.\n");
 
-    printf("Ahora, ingresa tu número de cuenta por favor (9 dígitos)\n");
+    printf("Ahora, ingresa tu numero de cuenta por favor (9 digitos)\n");
     printf("Asegúrate de ingresar un número válido, ten cuidado con insertar números negativos u otros caracteres.\n");
     int NumCuenta;
     if (scanf("%d",&NumCuenta)!=1){
@@ -28,14 +32,14 @@ int main(){
     }
     Digitofinal = NumCuenta%10;
     if(Digitofinal<0){
-        printf("Ha ocurrido un error inesperado, asegúrate de haber insertado bien tu número de cuenta.\n");
+        printf("Ha ocurrido un error inesperado, asegurate de haber insertado bien tu número de cuenta.\n");
         free(punto);
         return 2;
     }
     punto[Digitofinal]=-1;
-    printf("El número de cuenta ingresado fue %d, por lo que el último dígito va a ser %d \n", NumCuenta, Digitofinal);
-    printf("Ahora, la posición del último dígito de tu número de cuenta debe cambiar :))\n");
-    for(int Heropon=9;Heropon>=0;Heropon--) {
+    printf("El numero de cuenta ingresado fue %d, por lo que el ultimo digito va a ser %d \n", NumCuenta, Digitofinal);
+    printf("Ahora, la posicion del ultimo digito de tu numero de cuenta debe cambiar :))\n");
+    for(Heropon=9;Heropon>=0;Heropon--) {
         printf("%d",punto[Heropon]);
         printf("|");
     }
