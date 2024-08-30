@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 int Azurill;
 int Marill;
 int main(){
