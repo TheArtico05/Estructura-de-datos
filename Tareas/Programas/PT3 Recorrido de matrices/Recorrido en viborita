@@ -1,1 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#define F 6
+#define C 6
 
+void imprimirMatriz(int matriz[F][C], int fila, int col) 
+{
+    for (int x = 0; x < F; ++x) {
+        for (int y = 0; y < C; ++y) {
+            if (x == 0 || x == F - 1 || y == C - x - 1) {
+                if (x > fila || (x == fila && y >= col)) {
+                    printf("%2d ", matriz[x][y]); 
+                } else {
+                    printf("   "); 
+                }
+            } else {
+                printf("   ");
+            }
+        }
+        printf("\n");
+    }
+}
