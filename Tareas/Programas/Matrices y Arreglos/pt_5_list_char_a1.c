@@ -1,82 +1,117 @@
-[Project]
-FileName=list.dev
-Name=list
-Type=1
-Ver=2
-ObjFiles=
-Includes="C:\Users\Arturo Moreno\Documents\Estructura de datos\include"
-Libs=
-PrivateResource=
-ResourceIncludes="C:\Users\Arturo Moreno\Documents\Estructura de datos\source"
-MakeIncludes=
-Compiler=
-CppCompiler=
-Linker=
-IsCpp=0
-Icon=
-ExeOutput=
-ObjectOutput=
-LogOutput=
-LogOutputEnabled=0
-OverrideOutput=0
-OverrideOutputName=list.exe
-HostApplication=
-UseCustomMakefile=0
-CustomMakefile=
-CommandLine=
-Folders=
-IncludeVersionInfo=0
-SupportXPThemes=0
-CompilerSet=0
-CompilerSettings=0000000000000000000000000
-UnitCount=3
+#include <stdio.h>
+#include <stdlib.h>
 
-[VersionInfo]
-Major=1
-Minor=0
-Release=0
-Build=0
-LanguageID=1033
-CharsetID=1252
-CompanyName=
-FileVersion=1.0.0.0
-FileDescription=Developed using the Dev-C++ IDE
-InternalName=
-LegalCopyright=
-LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=1.0.0.0
-AutoIncBuildNr=0
-SyncProduct=1
+#include "list.h"
 
-[Unit1]
-FileName=..\ex1_list.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+static void print_list(const List *list) {
+    ListNode *node;
+    char *data;
+    int i;
 
-[Unit2]
-FileName=list.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+    fprintf(stdout, "List size is %d\n", list_size(list));
 
-[Unit3]
-FileName=..\include\list.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+    i = 0;
+    node = list_head(list);
 
+    while (1) {
+        data = list_data(node);
+        fprintf(stdout, "list.node[%03d]=%c, %p -> %p \n", i, *data, node, node->next);
+
+        i++;
+
+        if (list_is_tail(node))
+            break;
+        else
+            node = list_next(node);
+    }
+}
+
+int main(int argc, char **argv) {
+    List list;
+    ListNode *node;
+    char *data;
+    int i;
+
+    list_init(&list, free);
+
+    node = list_head(&list);
+    char chars[] = {'E', 'I', 'O', 'U', 'Q', 'Z', 'Y', 'X', 'R', 'L'};
+    for (i = 0; i < 10; i++) {
+        if ((data = (char *)malloc(sizeof(char))) == NULL)
+            return 1;
+
+        *data = chars[i];
+
+        if (list_ins_next(&list, NULL, data) != 0)
+            return 1;
+    }
+
+    print_list(&list);
+
+    node = list_head(&list);
+
+    for (i = 0; i < 3; ++i)
+        node = list_next(node);
+
+    data = list_data(node);
+    fprintf(stdout, "\nRemoving a node after the one containing %c\n", *data);
+
+    if (list_rem_next(&list, node, (void**)&data) != 0)
+        return 1;
+
+    print_list(&list);
+
+    fprintf(stdout, "\nInserting 'X' at the tail of the list\n");
+    *data = 'X';
+    if (list_ins_next(&list, list_tail(&list), data) != 0)
+        return 1;
+
+    print_list(&list);
+
+    fprintf(stdout, "\nRemoving a node after the first node\n");
+    if (list_rem_next(&list, list_head(&list), (void**)&data) != 0)
+        return 1;
+    print_list(&list);
+
+    fprintf(stdout, "\nRemoving a node at the head of the list\n");
+    if (list_rem_next(&list, NULL, (void**)&data) != 0)
+        return 1;
+    print_list(&list);
+
+    fprintf(stdout, "\nInsert 'Z' at the head of the list\n");
+    *data = 'Z';
+    if (list_ins_next(&list, NULL, data) != 0)
+        return 1;
+    print_list(&list);
+
+    fprintf(stdout, "\nIterating and removing the fourth node\n");
+
+    node = list_head(&list);
+    node = list_next(node);
+    node = list_next(node);
+
+    if (list_rem_next(&list, node, (void **)&data) != 0)
+        return 1;
+
+    print_list(&list);
+
+    fprintf(stdout, "\nInserting 'W' after the first node\n");
+    *data = 'W';
+    if (list_ins_next(&list, list_head(&list), data) != 0)
+        return 1;
+    print_list(&list);
+
+    i = list_is_head(&list, list_head(&list));
+    fprintf(stdout, "\nTesting list_is_head... value=%d (1=OK)\n", i);
+    i = list_is_head(&list, list_tail(&list));
+    fprintf(stdout, "Testing list_is_head... value=%d (1=OK)\n", i);
+    i = list_is_tail(list_tail(&list));
+    fprintf(stdout, "Testing list_is_tail... value=%d (1=OK)\n", i);
+    i = list_is_tail(list_head(&list));
+    fprintf(stdout, "Testing list_is_tail... value=%d (1=OK)\n", i);
+
+    fprintf(stdout, "\nDestroying the list\n");
+    list_destroy(&list);
+    system("pause");
+    return 0;
+}
