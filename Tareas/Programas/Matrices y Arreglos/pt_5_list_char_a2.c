@@ -69,7 +69,6 @@ int main(int argc, char **argv) {
     if (list_rem_next(&list, node, (void**)&data) != 0)
         return 1;
     free(data);
-
     print_list(&list);
 
     fprintf(stdout, "\nInserting 'D' at the tail of the list\n");
@@ -78,16 +77,9 @@ int main(int argc, char **argv) {
         return 1;
     print_list(&list);
 
-    fprintf(stdout, "\nRemoving a node after the first node\n");
-    if (list_rem_next(&list, list_head(&list), (void**)&data) != 0)
-        return 1;
-    free(data);
-    print_list(&list);
-
     fprintf(stdout, "\nRemoving a node at the head of the list\n");
     if (list_rem_next(&list, NULL, (void**)&data) != 0)
         return 1;
-    free(data);
     print_list(&list);
 
     fprintf(stdout, "\nInsert 'R' at the head of the list\n");
@@ -110,6 +102,10 @@ int main(int argc, char **argv) {
         return 1;
     print_list(&list);
 
+        fprintf(stdout, "\nRemoving a node after the first node\n");
+    if (list_rem_next(&list, list_head(&list), (void**)&data) != 0)
+        return 1;
+    print_list(&list);
 
     if (list_rem_next(&list, node, (void **)&data) != 0)
         return 1;
