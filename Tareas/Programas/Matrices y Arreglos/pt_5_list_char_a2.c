@@ -104,12 +104,6 @@ int main(int argc, char **argv) {
         return 1;
     print_list(&list);
     
-    if (list_rem_next(&list, node, (void **)&data) != 0)
-        return 1;
-    free(data);
-
-    print_list(&list);
-
     fprintf(stdout, "\nInserting 'o' after the first node\n");
     *data = 'o';
     if (list_ins_next(&list, list_head(&list), data) != 0)
