@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-
+//Character list prograr by Emiliano Ruiz Garcia amd Moreno Vigueras Arturo Tadeo
 static void print_list(const List *list) {
     ListNode *node;
     char *data;
@@ -31,11 +31,11 @@ int main(int argc, char **argv) {
     list_init(&list, free);
 
     for (Contar = 0; Contar < 14; Contar++) {
-        printf("Ingresa el caracter que quieres meter: ");
+        printf("Please enter the character you want to add to the list: (up to 13 characters) ");
         scanf(" %c", &nuevocarac);
 
         if ((data = (char *)malloc(sizeof(char))) == NULL) {
-            fprintf(stderr, "No se ha asignado bien la memoria, que habra pasado?\n");
+            fprintf(stderr, "Error: Memory wasn't assigned correctly ://\n");
             return 1;
         }
 
@@ -43,12 +43,12 @@ int main(int argc, char **argv) {
 
         if (i == 0) {
             if (list_ins_next(&list, NULL, data) != 0) {
-                fprintf(stderr, "No se pudo ingresar el eemento\n");
+                fprintf(stderr, "Couldn't assign element to the list\n");
                 return 1;
             }
         } else {
             if (list_ins_next(&list, list_tail(&list), data) != 0) {
-                fprintf(stderr, "No se pudo igual ingresar, que habra pasado?");
+                fprintf(stderr, "It wasn't possible to assign the element to list, what could have you done to get this error?");
                 return 1;
             }
         }
