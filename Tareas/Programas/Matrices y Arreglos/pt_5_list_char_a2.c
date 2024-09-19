@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-//Character list prograr by Emiliano Ruiz Garcia amd Moreno Vigueras Arturo Tadeo
+//Character list program by Emiliano Ruiz Garcia amd Moreno Vigueras Arturo Tadeo
 static void print_list(const List *list) {
     ListNode *node;
     char *data;
