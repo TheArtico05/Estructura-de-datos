@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "list.h"
 
-
 static void print_list(const List *list) {
     ListNode *node;
     char *data;
@@ -49,7 +48,7 @@ int main(int argc, char **argv) {
             }
         } else {
             if (list_ins_next(&list, list_tail(&list), data) != 0) {
-                fprintf(stderr, "No se pudo igual inggresar, que habra pasado?");
+                fprintf(stderr, "No se pudo igual ingresar, que habra pasado?");
                 return 1;
             }
         }
@@ -58,7 +57,6 @@ int main(int argc, char **argv) {
     print_list(&list);
 
     node = list_head(&list);
-
 
     for (i = 0; i < 3 && node != NULL; ++i)
         node = list_next(node);
@@ -81,14 +79,7 @@ int main(int argc, char **argv) {
     if (list_rem_next(&list, NULL, (void**)&data) != 0)
         return 1;
     print_list(&list);
-
-    fprintf(stdout, "\nInsert 'R' at the head of the list\n");
-
-    *data = 'R';
-    if (list_ins_next(&list, NULL, data) != 0)
-        return 1;
-    print_list(&list);
-
+    
     fprintf(stdout, "\nIterating and removing the fourth node\n");
 
     node = list_head(&list);
@@ -107,13 +98,17 @@ int main(int argc, char **argv) {
         return 1;
     print_list(&list);
 
+    fprintf(stdout, "\nInsert 'R' at the head of the list\n");
+    *data = 'R';
+    if (list_ins_next(&list, NULL, data) != 0)
+        return 1;
+    print_list(&list);
+    
     if (list_rem_next(&list, node, (void **)&data) != 0)
         return 1;
     free(data);
 
     print_list(&list);
-
-
 
     fprintf(stdout, "\nInserting 'o' after the first node\n");
     *data = 'o';
