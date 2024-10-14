@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
         return 1;
     print_clist(&list);
 
-    fprintf(stdout, "\nInserting 975 at the head of the list\n");
+    fprintf(stdout, "\nInserting 975 at the head of the list\n");//arreglar 975,
     *data = 975;
     if (clist_ins_next(&list, NULL, data) != 0)
         return 1;
