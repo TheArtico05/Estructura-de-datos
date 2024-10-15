@@ -6,18 +6,14 @@
 #include <string.h>
 #include "clist.h"
 
-/*
-    Initialize the circular list.
-*/
+//Creamos la lista:
 void clist_init(CList *list, void (*destroy)(void *data)) {
     list->size = 0;
     list->destroy = destroy;
     list->head = NULL;
 }
 
-/*
-    Destroying the circular list.
-*/
+//Para destruir nuestra lista:
 void clist_destroy(CList *list) {
     void *data;
 
@@ -31,10 +27,8 @@ void clist_destroy(CList *list) {
     return;
 }
 
-/*
-    Insert a new node after a specific node in the circular list.
-*/
-int clist_ins_next(CList *list, CListNode *node, const void *data) {
+//Para insertar nodos:
+int clist_ins_next(CList *list, CListNode *node, const void *data) {//se arreglo el error en 975
     CListNode *new_node;
 
     if ((new_node = (CListNode *)malloc(sizeof(CListNode))) == NULL)
@@ -43,22 +37,30 @@ int clist_ins_next(CList *list, CListNode *node, const void *data) {
     new_node->data = (void *)data;
 
     if (clist_size(list) == 0) {
-        // Insert in an empty list.
+        // Insertar en una lista vacia
         new_node->next = new_node;
         list->head = new_node;
     } else {
-        // Insert somewhere in the list.
-        new_node->next = node->next;
-        node->next = new_node;
+        if (node == NULL) {
+            // Si la lista no es vacia, esto pasa
+            new_node->next = list->head;
+            CListNode *last_node = list->head;
+            while (last_node->next != list->head)
+                last_node = last_node->next;
+            last_node->next = new_node;
+            list->head = new_node;
+        } else {
+            // Insertar en algun lado
+            new_node->next = node->next;
+            node->next = new_node;
+        }
     }
 
     list->size++;
     return 0;
 }
 
-/*
-    Remove the node immediately after a specific node in the circular list.
-*/
+//Para remover de la lista
 int clist_rem_next(CList *list, CListNode *node, void **data) {
     CListNode *old_node;
 
@@ -66,7 +68,7 @@ int clist_rem_next(CList *list, CListNode *node, void **data) {
         return -1;
 
     if (node == NULL) {
-        // Remove from the head.
+        // Caso para eliminar en head
         *data = list->head->data;
         if (list->head == list->head->next) {
             old_node = list->head;
@@ -81,7 +83,7 @@ int clist_rem_next(CList *list, CListNode *node, void **data) {
             list->head = list->head->next;
         }
     } else {
-        // Remove from somewhere other than the head.
+        // Caso para eliminar donde sea menos en head
         if (node->next == NULL)
             return -1;
 
@@ -89,9 +91,8 @@ int clist_rem_next(CList *list, CListNode *node, void **data) {
         *data = old_node->data;
         node->next = old_node->next;
     }
-
+    
     free(old_node);
     list->size--;
     return 0;
 }
-
